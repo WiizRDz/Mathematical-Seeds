@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<body onload="getRotation()">
+
+		<form id="input" action="/action_page.php">
+		  Amount: <input type="number" name="amount" value="1.61803398875"></br></br>
+		</form>
+
+		<button id="RUN" onclick="incr()">Run</button>
+		<button onclick="getRotation()">Update</button><br>
+
+		<canvas id="myCanvas" width="1000" height="1000"></canvas>
+
+	</body>
+
+	<script>
+		var canvas = document.getElementById("myCanvas");
+		var ctx = canvas.getContext("2d");
+		var width = canvas.width;
+		var height = canvas.height;
+		var rot = 1.61803398875;
+		var rad = 15;
+		increasing = false;
+
+		function incr() {
+			increasing = !increasing;
+		}
+
+		function getRotation() {
+		    var x = document.getElementById("input");
+		    rot = x.elements[0].value
+		    ctx.save();
+		    update();
+		    ctx.restore();
+		}
+
+		function drawX(x, y) {
+			ctx.font = "50px Consolas";
+			ctx.fillStyle = "#000000";
+			ctx.textAlign = "center";
+			ctx.fillText(".", x, y);
+		}
+
+		function drawCirc(x, y, disp, i) {
+			ctx.beginPath();
+			ctx.arc(x + 30 + disp*i/4, y, rad, 0, 2*Math.PI);
+			ctx.rotate(Math.PI*2*rot);
+			ctx.fillStyle = "#fad605"
+		    ctx.stroke();
+		    ctx.fill();
+		    ctx.closePath();
+		}
+
+		function update() {
+			ctx.clearRect(0, 0, width, height);
+			drawX(width/2, height/2 + 5);
+			ctx.translate(width/2, height/2);
+			for (i = 0; i < 150; i++) {
+				drawCirc(0, 0, 10, i+1);
+			}
+		}
+
+		function checkIncr() {
+			if (increasing) {
+				rot = parseFloat(rot) + parseFloat('0.00005');
+				document.getElementById("input").elements[0].value = rot;
+				document.getElementById("RUN").innerText = "Stop";
+				ctx.save();
+			    update();
+			    ctx.restore();
+			} else {
+				document.getElementById("RUN").innerText = "Run";
+			}
+		}
+
+		setInterval(checkIncr,25);
+	</script>
+
+</html>
