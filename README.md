@@ -1,5 +1,4 @@
 # Mathematical-Seeds
-The Golden Ratio (why it is so irrational) - Numberphile : https://www.youtube.com/watch?v=sj8Sg8qnjOg
 
 Mathematical Seeds is program inspired by the video https://youtu.be/sj8Sg8qnjOg by Numberphile talking about the irrationality of numbers. They explain a concept of rotating circles around one central point by 'x' number of rotations. 
 
