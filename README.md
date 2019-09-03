@@ -14,4 +14,4 @@ How to use:
   
 ---
 
-Go to https://wiizrdz.github.io/Mathematical-Seeds/ to run program
+Go to https://joshbra.gg/Mathematical-Seeds/ to run program
